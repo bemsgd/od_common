@@ -1,4 +1,4 @@
-package od
+package mongo_od
 
 import (
 	"encoding/json"

@@ -1,12 +1,12 @@
-package mongo
+package mongo_od
 
 import (
 	"encoding/json"
 	"fmt"
 )
 
-type MongoData interface {
-	GetJSON() string
+type SummaryOD interface {
+	GetSummary() string
 }
 
 const (

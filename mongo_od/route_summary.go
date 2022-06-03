@@ -1,4 +1,4 @@
-package od
+package mongo_od
 
 type RouteSummary struct {
 	TransactionDate string `json:"transactionDate"`
