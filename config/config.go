@@ -14,6 +14,10 @@ type Config interface {
 var appConfig *Config
 var configFileName string
 
+func SetConfigFileName(fn string) {
+	configFileName = fn
+}
+
 func GetYamlAppConfig() *Config {
 	if appConfig == nil {
 		appConfig = loadYamlConfiguration(configFileName)
