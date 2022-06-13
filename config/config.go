@@ -17,14 +17,16 @@ func SetConfigFileName(fn string) {
 	configFileName = fn
 }
 
-func GetYamlAppConfig(appConfig *Config) *Config {
+var appConfig *interface{}
+
+func GetYamlAppConfig() *interface{} {
 	if appConfig == nil {
-		appConfig = loadYamlConfiguration(configFileName, appConfig)
+		appConfig = LoadYamlConfiguration(configFileName, appConfig)
 	}
 	return appConfig
 }
 
-func loadYamlConfiguration(fileName string, config *Config) *Config {
+func LoadYamlConfiguration(fileName string, appConfig *interface{}) *interface{} {
 	f, err := os.Open(fileName)
 	if err != nil {
 		log.Fatalln("Error Cannot read app configuraion : ", fileName, err)
@@ -32,9 +34,9 @@ func loadYamlConfiguration(fileName string, config *Config) *Config {
 	defer f.Close()
 
 	decoder := yaml.NewDecoder(f)
-	err = decoder.Decode(config)
+	err = decoder.Decode(appConfig)
 	if err != nil {
 		log.Fatalln("Error Cannot initial app configuraion : ", fileName, err)
 	}
-	return config
+	return appConfig
 }

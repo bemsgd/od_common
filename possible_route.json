@@ -1,0 +1,24 @@
+{
+    "entry": "Chim Phli",
+    "exits": [{
+            "id": "Exit 11",
+            "exit": "Off-Ramp Charan Rd (Entry)"
+        },
+        {
+            "id": "Exit 13",
+            "exit": "Off-Ramp Pracharat 1 Rd (Entry)"
+        },
+        {
+            "id": "North",
+            "exit": "North Junction"
+        },
+        {
+            "id": "Exit 17",
+            "exit": "Off-Ramp Kamphaeng Phet Rd"
+        },
+        {
+            "id": "218",
+            "exit": "BS2"
+        }
+    ]
+}
