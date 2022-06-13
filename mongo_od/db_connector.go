@@ -37,19 +37,16 @@ func (tc *MongoRepository) DisconnectMongoDB() {
 	tc.Client.Disconnect(tc.Context)
 }
 
-func (tc *MongoRepository) InsertDatas(datas []MongoData) (*mongo.InsertManyResult, error) {
+func (tc *MongoRepository) InsertDatas(datas []interface{}) (*mongo.InsertManyResult, error) {
 	opts := options.InsertMany().SetOrdered(false)
 	var docs []interface{}
-	for _, f := range datas {
-		docs = append(docs, f)
-	}
-
+	docs = append(docs, datas...)
 	result, err := tc.Collection.InsertMany(tc.Context, docs, opts)
 	util.LogOnError("error cannot insert []data : ", err)
 	return result, err
 }
 
-func (tdb *MongoRepository) InsertData(data MongoData) (*mongo.InsertOneResult, error) {
+func (tdb *MongoRepository) InsertData(data interface{}) (*mongo.InsertOneResult, error) {
 	result, err := tdb.Collection.InsertOne(tdb.Context, data)
 	util.LogOnError("error cannot insert data : ", err)
 	return result, err
