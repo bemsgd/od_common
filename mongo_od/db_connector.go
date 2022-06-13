@@ -4,13 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/bemsgd/od_common/config"
 	"github.com/bemsgd/od_common/util"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
-
-var appConfig = config.GetYamlAppConfig()
 
 type MongoRepository struct {
 	Context    context.Context
