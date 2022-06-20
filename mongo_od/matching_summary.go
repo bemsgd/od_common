@@ -14,8 +14,8 @@ const (
 )
 
 type MatchingSummaryData struct {
-	SummaryType        string `bson:"SummaryType" json:"SummaryType"`
 	TravelDate         string `bson:"TravelDate" json:"TravelDate"`
+	TravelHour         string `bson:"TravelHour" json:"TravelHour"`
 	UnMatchDestination int    `bson:"UnMatchDestination" json:"UnMatchDestination"`
 	MatchDestion       int    `bson:"MatchDestion" json:"MatchDestion"`
 }
@@ -29,7 +29,7 @@ func (ods *MatchingSummaryData) UpdateMatch(match int) {
 }
 
 func (ods *MatchingSummaryData) GetDetail() string {
-	return fmt.Sprintf("TravelDate: %v, UnMatchDestination: %v, MatchDestion: %v", ods.TravelDate, ods.UnMatchDestination, ods.MatchDestion)
+	return fmt.Sprintf("TravelDate: %v, TravelHour: %v, UnMatchDestination: %v, MatchDestion: %v", ods.TravelDate, ods.TravelHour, ods.UnMatchDestination, ods.MatchDestion)
 }
 func (ods MatchingSummaryData) GetJSON() string {
 	result, _ := json.Marshal(ods)

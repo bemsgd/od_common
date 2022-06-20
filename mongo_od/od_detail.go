@@ -9,21 +9,18 @@ import (
 )
 
 type ODDetail struct {
-	SummaryType            string                       `bson:"SummaryType" json:"SummaryType"`
-	TravelDate             string                       `bson:"TravelDate" json:"TravelDate"`
-	Origin                 string                       `bson:"Origin" json:"Origin"`
-	Destination            string                       `bson:"Destination" json:"Destination"`
-	MaxTravellingTime      time.Duration                `bson:"MaxTravellingTime" json:"MaxTravellingTime"`
-	MinTravellingTime      time.Duration                `bson:"MinTravellingTime" json:"MinTravellingTime"`
-	TotalTravellingTime    time.Duration                `bson:"TotalTravellingTime" json:"TotalTravellingTime"`
-	TotalTransaction       int                          `bson:"TotalTransaction" json:"TotalTransaction"`
-	TransactionDetails     []travelling.TravellingChain `bson:"TransactionDetails" json:"TransactionDetails"`
-	MaxTimeTravellingChain travelling.TravellingChain   `bson:"MaxTimeTravellingChain" json:"MaxTimeTravellingChain"`
-	MinTimeTravellingChain travelling.TravellingChain   `bson:"MinTimeTravellingChain" json:"MinTimeTravellingChain"`
-}
-
-func (odd *ODDetail) AddTransactionDetails(t travelling.TravellingChain) {
-	odd.TransactionDetails = append(odd.TransactionDetails, t)
+	TravelDate             string                     `bson:"TravelDate" json:"TravelDate"`
+	TravelHour             string                     `bson:"TravelHour" json:"TravelHour"`
+	Origin                 string                     `bson:"Origin" json:"Origin"`
+	Destination            string                     `bson:"Destination" json:"Destination"`
+	VehicleClass           string                     `bson:"VehicleClass" json:"VehicleClass"`
+	PaymentType            string                     `bson:"PaymentType" json:"PaymentType"`
+	MaxTravellingTime      time.Duration              `bson:"MaxTravellingTime" json:"MaxTravellingTime"`
+	MinTravellingTime      time.Duration              `bson:"MinTravellingTime" json:"MinTravellingTime"`
+	TotalTravellingTime    time.Duration              `bson:"TotalTravellingTime" json:"TotalTravellingTime"`
+	TotalTransaction       int                        `bson:"TotalTransaction" json:"TotalTransaction"`
+	MaxTimeTravellingChain travelling.TravellingChain `bson:"MaxTimeTravellingChain" json:"MaxTimeTravellingChain"`
+	MinTimeTravellingChain travelling.TravellingChain `bson:"MinTimeTravellingChain" json:"MinTimeTravellingChain"`
 }
 
 func (odd *ODDetail) SetMaxTimeTravellingChain(t travelling.TravellingChain) {

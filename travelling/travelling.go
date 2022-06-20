@@ -13,6 +13,7 @@ type TravellingPointDetail struct {
 	PlaceName        string           `bson:"PlaceName" json:"PlaceName"`
 	LaneNo           int              `bson:"LaneNo" json:"LaneNo"`
 	Fare             float64          `bson:"Fare" json:"Fare"`
+	VehicleClass     int              `bson:"VehicleClass" json:"VehicleClass"`
 	PaymentType      string           `bson:"PaymentType" json:"PaymentType"`
 	DateTime         time.Time        `bson:"DateTime" json:"DateTime"`
 	LicensePlateData LicensePlateData `bson:"LicensePlateData" json:"LicensePlateData"`
