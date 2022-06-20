@@ -11,7 +11,8 @@ type ODDataSummary struct {
 	TravelMonth            string                     `json:"TravelMonth" bson:"TravelMonth"`
 	TravelDate             string                     `json:"TravelDate" bson:"TravelDate"`
 	TravelHour             string                     `json:"TravelHour" bson:"TravelHour"`
-	ODMatchingSummary      MatchingSummaryData        `json:"ODMatchingSummary" bson:"ODMatchingSummary"`
+	UnMatchDestination     int                        `bson:"UnMatchDestination" json:"UnMatchDestination"`
+	MatchDestion           int                        `bson:"MatchDestion" json:"MatchDestion"`
 	Origin                 string                     `bson:"Origin" json:"Origin"`
 	Destination            string                     `bson:"Destination" json:"Destination"`
 	VehicleClass           string                     `bson:"VehicleClass" json:"VehicleClass"`
@@ -22,6 +23,14 @@ type ODDataSummary struct {
 	TotalTransaction       int                        `bson:"TotalTransaction" json:"TotalTransaction"`
 	MaxTimeTravellingChain travelling.TravellingChain `bson:"MaxTimeTravellingChain" json:"MaxTimeTravellingChain"`
 	MinTimeTravellingChain travelling.TravellingChain `bson:"MinTimeTravellingChain" json:"MinTimeTravellingChain"`
+}
+
+func (ods *ODDataSummary) UpdateUnMatch(unmatch int) {
+	ods.UnMatchDestination += unmatch
+}
+
+func (ods *ODDataSummary) UpdateMatch(match int) {
+	ods.MatchDestion += match
 }
 
 func (odd *ODDataSummary) SetMaxTimeTravellingChain(t travelling.TravellingChain) {
