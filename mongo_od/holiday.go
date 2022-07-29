@@ -22,5 +22,5 @@ func (adb *MongoRepository) IsHolidayDate(date string) bool {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return h.Date == ""
+	return h.Date != ""
 }
