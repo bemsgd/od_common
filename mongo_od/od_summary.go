@@ -22,6 +22,7 @@ type ODDataSummary struct {
 	MaxTimeTravellingChain travelling.TravellingChain `bson:"MaxTimeTravellingChain" json:"MaxTimeTravellingChain"`
 	MinTimeTravellingChain travelling.TravellingChain `bson:"MinTimeTravellingChain" json:"MinTimeTravellingChain"`
 	DateType               string                     `bson:"DateType" json:"DateType"`
+	PlaceCode              string                     `bson:"PlaceCode" json:"PlaceCode"`
 }
 
 func (odd *ODDataSummary) SetMaxTimeTravellingChain(t travelling.TravellingChain) {
