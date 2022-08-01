@@ -20,7 +20,7 @@ func (adb *MongoRepository) IsHolidayDate(date string) bool {
 
 	err := collection.FindOne(ctx, filter).Decode(&h)
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 	return h.Date != ""
 }
