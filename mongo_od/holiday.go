@@ -25,3 +25,17 @@ func (adb *MongoRepository) IsHolidayDate(date string) bool {
 	}
 	return h.Date != ""
 }
+
+func (adb *MongoRepository) IsFreeTollDay(date string) bool {
+	ctx := adb.Context
+	collection := adb.Collection
+	var h Holiday
+	filter := bson.M{"Date": date}
+
+	err := collection.FindOne(ctx, filter).Decode(&h)
+	if err != nil {
+		log.Print(err)
+	}
+
+	return h.FreeTollFlag == "Y"
+}
