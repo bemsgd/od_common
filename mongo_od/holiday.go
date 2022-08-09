@@ -7,9 +7,10 @@ import (
 )
 
 type Holiday struct {
-	Date        string `bson:"Date" json:"Date"`
-	Description string `bson:"Description" json:"Description"`
-	CreateBy    string `bson:"CreateBy" json:"CreateBy"`
+	Date         string `bson:"Date" json:"Date"`
+	Description  string `bson:"Description" json:"Description"`
+	FreeTollFlag string `bson:"FreeTollFlag" json:"FreeTollFlag"`
+	CreateBy     string `bson:"CreateBy" json:"CreateBy"`
 }
 
 func (adb *MongoRepository) IsHolidayDate(date string) bool {
