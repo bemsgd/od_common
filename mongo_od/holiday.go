@@ -39,3 +39,19 @@ func (adb *MongoRepository) IsFreeTollDay(date string) bool {
 
 	return h.FreeTollFlag == "Y"
 }
+
+func (adb *MongoRepository) GetAllHoliday() []Holiday {
+	ctx := adb.Context
+	collection := adb.Collection
+	var holidays []Holiday
+	filter := bson.M{}
+	cur, err := collection.Find(ctx, filter)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = cur.All(ctx, &holidays)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return holidays
+}
