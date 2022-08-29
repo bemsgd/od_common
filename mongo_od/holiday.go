@@ -3,7 +3,9 @@ package mongo_od
 import (
 	"log"
 
+	"github.com/bemsgd/od_common/util"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type Holiday struct {
@@ -54,4 +56,16 @@ func (adb *MongoRepository) GetAllHoliday() []Holiday {
 		log.Fatal(err)
 	}
 	return holidays
+}
+
+func (adb *MongoRepository) AddHoliday(h Holiday) (*mongo.InsertOneResult, error) {
+	result, err := adb.Collection.InsertOne(adb.Context, h)
+	util.LogOnError("error cannot insert holiday data : ", err)
+	return result, err
+}
+
+func (adb *MongoRepository) RemoveHoliday(h Holiday) (*mongo.DeleteResult, error) {
+	result, err := adb.Collection.DeleteOne(adb.Context, h)
+	util.LogOnError("error cannot delete holiday data : ", err)
+	return result, err
 }
