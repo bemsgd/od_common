@@ -1,6 +1,7 @@
 package mongo_od
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/bemsgd/od_common/util"
@@ -72,6 +73,7 @@ func (adb *MongoRepository) RemoveHoliday(h Holiday) (*mongo.DeleteResult, error
 
 func (adb *MongoRepository) UpdateHoliday(h Holiday) (*mongo.UpdateResult, error) {
 	result, err := adb.Collection.ReplaceOne(adb.Context, bson.M{"Date": h.Date}, h)
-	util.LogOnError("error cannot update holiday data : ", err)
+	// util.LogOnError("error cannot update holiday data : ", err)
+	fmt.Printf("Error ========= %v", err)
 	return result, err
 }
