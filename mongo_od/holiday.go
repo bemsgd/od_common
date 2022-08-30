@@ -69,3 +69,9 @@ func (adb *MongoRepository) RemoveHoliday(h Holiday) (*mongo.DeleteResult, error
 	util.LogOnError("error cannot delete holiday data : ", err)
 	return result, err
 }
+
+func (adb *MongoRepository) UpdateHoliday(h Holiday) (*mongo.UpdateResult, error) {
+	result, err := adb.Collection.UpdateOne(adb.Context, bson.M{"Date": h.Date}, h)
+	util.LogOnError("error cannot update holiday data : ", err)
+	return result, err
+}
