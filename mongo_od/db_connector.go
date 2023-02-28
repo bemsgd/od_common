@@ -17,7 +17,7 @@ type MongoRepository struct {
 
 func ConnectMongoDB(dbUrl, dbName, collectionName string) MongoRepository {
 	ctx := context.TODO()
-	appDbUrl := fmt.Sprintf("%v%v?retryWrites=true&w=majority", dbUrl, dbName)
+	appDbUrl := fmt.Sprintf("%v%v?retryWrites=true&w=majority&directConnection=true", dbUrl, dbName)
 	clientOptions := options.Client().ApplyURI(appDbUrl)
 	client, err := mongo.Connect(ctx, clientOptions)
 	util.DieOnError("Error while connect to db", err)
